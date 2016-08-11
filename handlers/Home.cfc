@@ -1,4 +1,5 @@
 /*
+ * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,12 @@
  */
 
 /**
+ * A normal ColdBox Event Handler
+ */
 component{
 
+    function index(event,rc,prc){
+        event.setView( "home/index" );
+    }
 
 }
