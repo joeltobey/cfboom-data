@@ -1,0 +1,38 @@
+{
+    "name":"<cfboom/> Data Service",
+    "version":"1.0.0",
+    "author":"Joel Tobey <joeltobey@gmail.com>",
+    "slug":"cfboom-data",
+    "type":"modules",
+    "homepage":"https://github.com/joeltobey/cfboom-data",
+    "documentation":"https://github.com/joeltobey/cfboom-data/wiki",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/joeltobey/cfboom-data"
+    },
+    "shortDescription":"This Data Service provides an easy ORM-like approach to your data.",
+    "license":[
+        {
+            "type":"Apache2",
+            "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    ],
+    "contributors":[
+        "Joel Tobey <joeltobey@gmail.com>"
+    ],
+    "engines":[
+        {
+            "type":"lucee",
+            "version":">4.5"
+        },
+        {
+            "type":"adobe",
+            "version":">9.02"
+        }
+    ],
+    "ignore":[
+        "**/.*",
+        "tests",
+        "*/.md"
+    ]
+}
