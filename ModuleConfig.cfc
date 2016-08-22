@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Joel Tobey <joel@cfboom.com>
+ * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,21 +60,21 @@ Optional Methods
 component {
 
     // Module Properties
-    this.title              = "<cfboom/> Data Service";
+    this.title              = "<cfboom/> JDBC Service";
     this.author             = "Joel Tobey";
-    this.webURL             = "https://github.com/joeltobey/cfboom-data";
-    this.description        = "This Data Service provides an easy ORM-like approach to your data.";
+    this.webURL             = "https://github.com/joeltobey/cfboom-jdbc";
+    this.description        = "This JDBC Service provides an easy ORM-like approach to your data.";
     this.version            = "1.0.0";
     // If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
     this.viewParentLookup   = true;
     // If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
     this.layoutParentLookup = true;
     // Module Entry Point
-    this.entryPoint         = "data";
+    this.entryPoint         = "cfboom/jdbc";
     // Model Namespace
-    this.modelNamespace     = "data";
+    this.modelNamespace     = "cfboom-jdbc";
     // CF Mapping
-    this.cfmapping          = "data";
+    this.cfmapping          = "cfboom/jdbc";
     // Auto-map models
     this.autoMapModels      = true;
     // Module Dependencies

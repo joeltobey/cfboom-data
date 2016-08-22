@@ -1,2 +1,2 @@
-# cfboom-data
-This ColdBox Data Service Module provides an easy ORM-like approach to your data.
+# cfboom-jdbc
+This ColdBox JDBC Service Module provides an easy ORM-like approach to your data.

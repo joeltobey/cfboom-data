@@ -1,16 +1,16 @@
 {
-    "name":"<cfboom/> Data Service",
+    "name":"<cfboom/> JDBC Service",
     "version":"1.0.0",
     "author":"Joel Tobey <joeltobey@gmail.com>",
-    "slug":"cfboom-data",
+    "slug":"cfboom-jdbc",
     "type":"modules",
-    "homepage":"https://github.com/joeltobey/cfboom-data",
-    "documentation":"https://github.com/joeltobey/cfboom-data/wiki",
+    "homepage":"https://github.com/joeltobey/cfboom-jdbc",
+    "documentation":"https://github.com/joeltobey/cfboom-jdbc/wiki",
     "repository":{
         "type":"git",
-        "url":"https://github.com/joeltobey/cfboom-data"
+        "url":"https://github.com/joeltobey/cfboom-jdbc"
     },
-    "shortDescription":"This Data Service provides an easy ORM-like approach to your data.",
+    "shortDescription":"This JDBC Service provides an easy ORM-like approach to your data.",
     "license":[
         {
             "type":"Apache2",
