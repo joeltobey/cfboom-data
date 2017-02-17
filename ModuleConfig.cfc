@@ -60,7 +60,7 @@ Optional Methods
 component {
 
     // Module Properties
-    this.title              = "<cfboom/> JDBC Service";
+    this.title              = "cfboom JDBC Service";
     this.author             = "Joel Tobey";
     this.webURL             = "https://github.com/joeltobey/cfboom-jdbc";
     this.description        = "This JDBC Service provides an easy ORM-like approach to your data.";
