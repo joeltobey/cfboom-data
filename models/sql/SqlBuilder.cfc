@@ -1,5 +1,3 @@
-<cfsilent>
-<!---
 /*
  * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
  *
@@ -15,5 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
---->
-</cfsilent><h1>Welcome to my cool module page!</h1>
+
+/**
+ * Builds SQL statements
+ */
+interface
+	displayname="Interface Sqlbuilder"
+{
+}
