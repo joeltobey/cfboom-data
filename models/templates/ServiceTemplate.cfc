@@ -14,22 +14,14 @@ component
       .append(" */").append( NEW_LINE );
     sb.append("component").append( NEW_LINE )
       .append( TAB ).append('displayname="Class ').append( object.TABLE_NAME ).append(' Service"').append( NEW_LINE )
-      .append( TAB ).append('extends="cborm.models.VirtualEntityService"').append( NEW_LINE)
-      .append( TAB ).append('accessors="true"').append( NEW_LINE)
+      .append( TAB ).append('extends="cfboom.jdbc.models.AbstractServiceSupport"').append( NEW_LINE)
       .append( TAB ).append('output="false"').append( NEW_LINE)
       .append("{").append( NEW_LINE )
-      .append( TAB ).append("/**").append( NEW_LINE )
-      .append( TAB ).append(' * @dsn.inject coldbox:datasource:').append( dsn ).append ( NEW_LINE )
-      .append( TAB ).append(" */").append( NEW_LINE )
-      .append( TAB ).append("public models."). append( dsn ). append(".").append( object.TABLE_NAME ).append("Service function init(required struct dsn) {").append( NEW_LINE )
-      .append( TAB ).append( TAB ).append("var args = {};").append( NEW_LINE )
-      .append( TAB ).append( TAB ).append("args['entityName'] = ").append('"').append( object.TABLE_NAME ).append('";').append( NEW_LINE )
-      .append( TAB ).append( TAB ).append("args['queryCacheRegion'] = ").append('"').append( object.TABLE_NAME ).append('";').append( NEW_LINE )
-      .append( TAB ).append( TAB ).append("args['datasource'] = dsn.name;").append( NEW_LINE )
-      .append( TAB ).append( TAB ).append('super.init( argumentCollection:args );').append( NEW_LINE )
+      .append( TAB ).append("public models.").append( dsn ).append(".").append( object.TABLE_NAME ).append("Service function init() {").append( NEW_LINE )
+      .append( TAB ).append( TAB ).append('super.init("').append( dsn ).append(".").append( object.TABLE_NAME ).append('Dao");').append ( NEW_LINE )
       .append( TAB ).append( TAB ).append("return this;").append ( NEW_LINE )
-          .append( TAB ).append("}").append( NEW_LINE );
-      sb.append("}").append( NEW_LINE )
+      .append( TAB ).append("}").append( NEW_LINE );
+      sb.append("}").append( NEW_LINE );
     return sb.toString();
   }
 }

@@ -18,7 +18,10 @@ component
     }
     sb.append(" */").append( NEW_LINE )
       .append("component").append( NEW_LINE )
+      .append( TAB ).append('extends="cfboom.lang.Object"').append( NEW_LINE)
       .append( TAB ).append('displayname="Class ').append( object.TABLE_NAME ).append('"').append( NEW_LINE )
+      .append( TAB ).append('label="').append( object.TABLE_NAME ).append('"').append( NEW_LINE )
+      .append( TAB ).append('labelPlural="').append( object.TABLE_NAME ).append('s"').append( NEW_LINE )
       .append( TAB ).append('entityname="').append( object.TABLE_NAME ).append('"').append( NEW_LINE )
       .append( TAB ).append('table="').append( object.TABLE_NAME ).append('"').append( NEW_LINE )
       .append( TAB ).append('persistent="true"').append( NEW_LINE)
@@ -37,23 +40,33 @@ component
         }
         sb.append( TAB ).append(" */").append( NEW_LINE );
       }
+      // name
       sb.append( TAB ).append('property name="').append( convertColumnNameToProperyName(field.COLUMN_NAME) ).append('"');
+      sb.append(' label="').append( field.COLUMN_NAME ).append('"');
+      // fieldType
       if ( field.COLUMN_KEY == "PRI" ) {
-        sb.append(' fieldtype="id" generator="native" setter="false"');
+        sb.append(' fieldType="id" generator="native"');
       } else if ( field.DATA_TYPE == "datetime" ) {
-        sb.append(' fieldtype="timestamp"');
+        sb.append(' fieldType="timestamp"');
       } else {
-        sb.append(' fieldtype="column"');
+        sb.append(' fieldType="column"');
       }
+      // column
       sb.append(' column="').append( field.COLUMN_NAME ).append('"')
+        // type
         .append(' type="').append( translateToColdFusionType(field.DATA_TYPE) ).append('"')
-        .append(' sqlType="').append( translateToColdFusionSqlType(field.DATA_TYPE) ).append('"')
-        .append(";").append( NEW_LINE ).append( NEW_LINE );
+        // sqlType
+        .append(' sqlType="').append( translateToColdFusionSqlType(field.DATA_TYPE) ).append('"');
+      if ( field.IS_NULLABLE == "YES" )
+        sb.append(' nillable="true"');
+      if ( len(field.CHARACTER_MAXIMUM_LENGTH) )
+        sb.append(' length="').append( javaCast("int", field.CHARACTER_MAXIMUM_LENGTH) ).append('"');
+      sb.append(";").append( NEW_LINE ).append( NEW_LINE );
     }
     sb.append( TAB ).append("public models."). append( dsn ). append(".").append( object.TABLE_NAME ).append(" function init() {").append( NEW_LINE )
       .append( TAB ).append( TAB ).append("return this;").append ( NEW_LINE )
       .append( TAB ).append("}").append( NEW_LINE );
-    sb.append("}").append( NEW_LINE )
+    sb.append("}").append( NEW_LINE );
     return sb.toString();
   }
 }

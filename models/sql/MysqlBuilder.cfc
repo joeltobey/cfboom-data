@@ -26,4 +26,30 @@ component
 	public cfboom.jdbc.models.sql.MysqlBuilder function init() {
 		return this;
 	}
+
+  public string function findWhere( required cfboom.jdbc.models.Object object, required struct criteria ) {
+    var sb = createObject("java", "java.lang.StringBuilder").init();
+    sb.append("SELECT * FROM `")
+      .append( object.getTable() )
+      .append("`");
+
+    var firstKey = true;
+    for ( var key in criteria ) {
+      if ( !structKeyExists(object.getFieldMap(), key) )
+        throw("Unknown field `" & key & "` in findWhere() criteria", "SqlBuilderException");
+
+      var field = object.getFieldMap()[key];
+      if ( firstKey ) {
+        sb.append(" WHERE `");
+      } else {
+        sb.append(" AND `");
+      }
+      sb.append( field.getColumn() )
+        .append("` = :")
+        .append( field.getName() );
+
+      firstKey = false;
+    }
+    return sb.toString();
+  }
 }

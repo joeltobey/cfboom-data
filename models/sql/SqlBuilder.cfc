@@ -20,4 +20,5 @@
 interface
 	displayname="Interface Sqlbuilder"
 {
+  public string function findWhere( required cfboom.jdbc.models.Object object, required struct criteria );
 }
