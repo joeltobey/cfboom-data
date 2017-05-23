@@ -18,6 +18,7 @@
  * Fields on objects represent the details of each object and are analogous to columns in a database table.
  */
 component
+    extends="cfboom.lang.Object"
     displayname="Class Field"
     accessors="true"
     output="false"
@@ -86,6 +87,11 @@ component
      * Field name used in API calls, such as create(), delete(), and query().
      */
     property name="name" type="string" required="true";
+
+    /**
+     * Database column name for the field.
+     */
+    property name="column" type="string" required="true";
 
     /**
      * Indicates whether the field is nillable (true) or not (false). A nillable field can have empty content. A non-nillable field must have a value in order for the object to be created or saved.
