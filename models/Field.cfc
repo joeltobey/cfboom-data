@@ -116,7 +116,7 @@ component
     /**
      * The queryParam cfsqltype value
      */
-    property name="sqlType" type="string" required="true" validate="regex" validateparams="{pattern=cf_sql_bigint|cf_sql_bit|cf_sql_char|cf_sql_blob|cf_sql_clob|cf_sql_date|cf_sql_decimal|cf_sql_double|cf_sql_float|cf_sql_idstamp|cf_sql_integer|cf_sql_longvarchar|cf_sql_money|cf_sql_money4|cf_sql_numeric|cf_sql_real|cf_sql_refcursor|cf_sql_smallint|cf_sql_time|cf_sql_timestamp|cf_sql_tinyint|cf_sql_varchar}";
+    property name="sqlType" type="string" required="true";
 
     /**
      * The data type as defined in the source database.
