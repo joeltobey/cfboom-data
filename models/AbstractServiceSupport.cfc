@@ -28,7 +28,7 @@ component
   property name="wirebox" inject="wirebox";
 
   public cfboom.jdbc.models.AbstractServiceSupport function init( required string daoBeanName ) {
-    _instance['daoBeanName'] = arguments.daoBeanName;
+    _instance['daoBeanName'] = daoBeanName;
     return this;
   }
 
@@ -37,14 +37,44 @@ component
   }
 
   public any function findWhere( required struct criteria ) {
-  	return _instance.dao.findWhere( arguments.criteria );
+    return _instance.dao.findWhere( criteria );
   }
 
-  public any function load() {}
+  public query function findAllWhere( required struct criteria, string sortOrder = "" ) {
+    return _instance.dao.findAllWhere( criteria, sortOrder );
+  }
 
-  public any function insert() {}
+  public any function new( required struct criteria ) {
+    var newRecordId = javaCast("null", "");
+    var generatedKey = _instance.dao.new( criteria );
+    if (!isNull(generatedKey))
+      newRecordId = generatedKey;
 
-  public any function update() {}
+    var idField = _instance.dao.getIdField();
+    if (isNull(newRecordId) && !isNull(idField)) {
+      for (var key in criteria) {
+        if (idField.getName() == key) {
+          newRecordId = criteria[key];
+          break;
+        }
+      }
+    }
 
-  public any function delete() {}
+    if (!isNull(newRecordId) && !isNull(idField))
+      return _instance.dao.findWhere({"#idField.getName()#":newRecordId});
+
+    if (!isNull(newRecordId))
+      return newRecordId;
+  }
+
+  public any function update( required any id, required struct criteria ) {
+    _instance.dao.update( id, criteria );
+    var idField = _instance.dao.getIdField();
+    return findWhere({"#idField.getName()#": id});
+  }
+
+  public any function executeQuery( required string statement, required struct criteria ) {
+    return _instance.dao.executeQuery( statement, criteria );
+  }
+
 }

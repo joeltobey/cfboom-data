@@ -56,7 +56,7 @@ component
     /**
      * Should be "id" for primary key. If fieldtype is not specified and the useDBForMapping=true, then the fieldtype is determined by inspecting the database.
      */
-    property name="fieldType" type="string" required="false" validate="regex" validateparams="{pattern=collection|column|id|many-to-many|many-to-one|one-to-many|one-to-one|timestamp|version}";
+    property name="fieldType" type="string" required="false" validate="regex" validateparams="{pattern=collection|column|id|many-to-many|many-to-one|one-to-many|one-to-one|timestamp|version|none}";
 
     /**
      * Indicates whether the field is filterable (true) or not (false). If true, then this field can be specified in the WHERE clause of a query string in a query() call.
