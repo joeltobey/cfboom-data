@@ -16,8 +16,6 @@
 
 /**
  * This is the entry point to all JDBC calls.
- *
- * @singleton
  */
 component
   extends="cfboom.lang.Object"
