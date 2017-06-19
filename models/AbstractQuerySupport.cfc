@@ -26,8 +26,8 @@ component
     return this;
   }
 
-  public any function findWhere( required struct criteria ) {
-    var result = findAllWhere( criteria );
+  public any function findWhere( required struct criteria, string sortOrder = "", numeric limit = -1 ) {
+    var result = findAllWhere( argumentCollection:arguments );
     if ( result.recordCount == 1 ) {
       var args = {};
       args['target'] = wirebox.getInstance( _instance.beanName );
@@ -39,10 +39,10 @@ component
     }
   }
 
-  public query function findAllWhere( required struct criteria, string sortOrder = "" ) {
+  public query function findAllWhere( required struct criteria, string sortOrder = "", numeric limit = -1 ) {
     if (len(sortOrder))
       sortOrder = getField( sortOrder ).getColumn();
-    return executeQuery( _instance.sqlBuilder.findAllWhere( _instance.object, initParams(criteria), sortOrder ), criteria );
+    return executeQuery( _instance.sqlBuilder.findAllWhere( _instance.object, initParams(criteria), sortOrder, limit ), criteria );
   }
 
   public any function new( required struct criteria ) {
@@ -73,9 +73,10 @@ component
     q.execute();
   }
 
-  public any function executeQuery( required string statement, required struct criteria ) {
+  public any function executeQuery( required string statement, struct criteria ) {
     var q = newQuery( statement );
-    addParams( q, criteria );
+    if (structKeyExists(arguments, "criteria"))
+      addParams( q, criteria );
     var result = q.execute().getResult();
     return result;
   }
@@ -191,7 +192,7 @@ component
         fieldName = left(key, len(key) - 6);
       }
 
-      if ( !structKeyExists(_instance.object.getFieldMap(), key) )
+      if ( !structKeyExists(_instance.object.getFieldMap(), fieldName) )
         throw("Unknown field `" & key & "` in criteria", "SqlBuilderException");
 
       // Ensure param exists

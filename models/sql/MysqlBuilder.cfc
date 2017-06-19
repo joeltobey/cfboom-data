@@ -27,7 +27,7 @@ component
     return this;
   }
 
-  public string function findAllWhere( required cfboom.jdbc.models.Object object, required struct params, string sortOrder = "" ) {
+  public string function findAllWhere( required cfboom.jdbc.models.Object object, required struct params, string sortOrder = "", numeric limit = -1 ) {
     var sb = createObject("java", "java.lang.StringBuilder").init();
     sb.append("SELECT * FROM `")
       .append( object.getTable() )
@@ -86,7 +86,11 @@ component
     }
 
     if (len(sortOrder)) {
-      sb.appned(" ORDER BY `").append( sortOrder ).append("`");
+      sb.append(" ORDER BY `").append( sortOrder ).append("`");
+    }
+
+    if (limit > 0) {
+      sb.append(" LIMIT 0,").append( javaCast("int", limit) );
     }
     return sb.toString();
   }

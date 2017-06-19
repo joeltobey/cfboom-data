@@ -34,12 +34,16 @@ component
     _instance['dao'] = wirebox.getInstance( _instance.daoBeanName );
   }
 
-  public any function findWhere( required struct criteria ) {
-    return _instance.dao.findWhere( criteria );
+  public any function findWhere( required struct criteria, string sortOrder = "", numeric limit = -1 ) {
+    return _instance.dao.findWhere( criteria, sortOrder, limit );
   }
 
-  public query function findAllWhere( required struct criteria, string sortOrder = "" ) {
-    return _instance.dao.findAllWhere( criteria, sortOrder );
+  public query function findAll() {
+    return findAllWhere( {} );
+  }
+
+  public query function findAllWhere( required struct criteria, string sortOrder = "", numeric limit = -1 ) {
+    return _instance.dao.findAllWhere( criteria, sortOrder, limit );
   }
 
   public any function new( required struct criteria ) {
