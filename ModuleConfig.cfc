@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2017 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ component
   this.author             = "Joel Tobey";
   this.webURL             = "https://github.com/joeltobey/cfboom-jdbc";
   this.description        = "This JDBC Service provides an easy ORM-like approach to your data.";
-  this.version            = "1.0.0";
+  this.version            = "0.5.0";
   // If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
   this.viewParentLookup   = true;
   // If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
@@ -43,9 +43,6 @@ component
 
   function configure() {
 
-    // parent settings
-    parentSettings = {};
-
     // module settings - stored in modules.name.settings
     settings = {
       // Array of datasources that the cfboom-jdbc module manages
@@ -56,33 +53,6 @@ component
       generatedPath = "/generated",
       modelPath = "/models"
     };
-
-    // Layout Settings
-    layoutSettings = {
-      defaultLayout = ""
-    };
-
-    // datasources
-    datasources = {};
-
-    // SES Routes
-    routes = [
-      // Module Entry Point
-      { pattern="/", handler="home", action="index" },
-      // Convention Route
-      { pattern="/:handler/:action?" }
-    ];
-
-    // Custom Declared Points
-    interceptorSettings = {
-      customInterceptionPoints = ""
-    };
-
-    // Custom Declared Interceptors
-    interceptors = [];
-
-    // Binder Mappings
-    // binder.map("Alias").to("#moduleMapping#.model.MyService");
 
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2017 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 
 /**
  * Builds MySQL statements
- *
- * @singleton
  */
-component
+component singleton
+  extends="cfboom.lang.Object"
   displayname="Class MysqlBuilder"
   output="false"
 {
