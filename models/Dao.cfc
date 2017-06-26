@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2017 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
  */
 
 /**
- * A normal ColdBox Event Handler
- */
-component{
-
-    function index(event,rc,prc){
-        event.setView( "home/index" );
-    }
-
+ * Dao
+ *
+ * @author joeltobey
+ * @date 5/23/17
+ **/
+interface {
+  public any function findWhere( required struct criteria, string sortOrder = "", numeric limit = -1 );
 }

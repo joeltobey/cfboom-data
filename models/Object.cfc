@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2017 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
  * Objects represent database tables that contain your information.
  */
 component
+    extends="cfboom.lang.Object"
     displayname="Class Object"
     accessors="true"
     output="false"
@@ -38,9 +39,14 @@ component
     property name="deletable" type="boolean" default="true";
 
     /**
-     * Array of fields associated with the object.
+     * Array of field names associated with the object in order.
      */
     property name="fields" type="array";
+
+    /**
+     * Map of cfboom.jdbc.models.Field objects.
+     */
+    property name="fieldMap" type="struct";
 
     /**
      * Label text for the object name.
@@ -53,9 +59,14 @@ component
     property name="labelPlural" type="string" required="false";
 
     /**
-     * Name of the object. Example: getInstance( "jdbc:[name]" )
+     * Name of the object. Example: getInstance( name )
      */
     property name="name" type="string" required="true";
+
+    /**
+     * Name of the database table.
+     */
+    property name="table" type="string" required="true";
 
     /**
      * Indicates whether the object can be queried via the query() call (true) or not (false).

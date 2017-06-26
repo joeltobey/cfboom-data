@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2017 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
  * Fields on objects represent the details of each object and are analogous to columns in a database table.
  */
 component
+    extends="cfboom.lang.Object"
     displayname="Class Field"
     accessors="true"
     output="false"
@@ -55,7 +56,7 @@ component
     /**
      * Should be "id" for primary key. If fieldtype is not specified and the useDBForMapping=true, then the fieldtype is determined by inspecting the database.
      */
-    property name="fieldType" type="string" required="false" validate="regex" validateparams="{pattern=collection|column|id|many-to-many|many-to-one|one-to-many|one-to-one|timestamp|version}";
+    property name="fieldType" type="string" required="false" validate="regex" validateparams="{pattern=collection|column|id|many-to-many|many-to-one|one-to-many|one-to-one|timestamp|version|none}";
 
     /**
      * Indicates whether the field is filterable (true) or not (false). If true, then this field can be specified in the WHERE clause of a query string in a query() call.
@@ -88,6 +89,11 @@ component
     property name="name" type="string" required="true";
 
     /**
+     * Database column name for the field.
+     */
+    property name="column" type="string" required="true";
+
+    /**
      * Indicates whether the field is nillable (true) or not (false). A nillable field can have empty content. A non-nillable field must have a value in order for the object to be created or saved.
      */
     property name="nillable" type="boolean" default="true";
@@ -110,7 +116,7 @@ component
     /**
      * The queryParam cfsqltype value
      */
-    property name="sqlType" type="string" required="true" validate="regex" validateparams="{pattern=cf_sql_bigint|cf_sql_bit|cf_sql_char|cf_sql_blob|cf_sql_clob|cf_sql_date|cf_sql_decimal|cf_sql_double|cf_sql_float|cf_sql_idstamp|cf_sql_integer|cf_sql_longvarchar|cf_sql_money|cf_sql_money4|cf_sql_numeric|cf_sql_real|cf_sql_refcursor|cf_sql_smallint|cf_sql_time|cf_sql_timestamp|cf_sql_tinyint|cf_sql_varchar}";
+    property name="sqlType" type="string" required="true";
 
     /**
      * The data type as defined in the source database.

@@ -1,7 +1,5 @@
-<cfsilent>
-<!---
 /*
- * Copyright 2016 Joel Tobey <joeltobey@gmail.com>
+ * Copyright 2017 Joel Tobey <joeltobey@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,5 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
---->
-</cfsilent><h1>Welcome to my cool module page!</h1>
+
+/**
+ * Builds SQL statements
+ */
+interface
+	displayname="Interface Sqlbuilder"
+{
+  public string function findWhere( required cfboom.jdbc.models.Object object, required struct criteria );
+}
